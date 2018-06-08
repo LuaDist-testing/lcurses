@@ -1,51 +1,68 @@
-                               lcurses
-                               -------
+lcurses
+=======
 
-                     Reuben Thomas <rrt@sc3d.org>
-                 http://luaforge.net/projects/lcurses
+By the [lcurses project][GitHub]
 
-
-lcurses is a C library for Lua 5.1 that wraps the curses API. It is
-copyright Tiago Dionizio <tiago.dionizio@gmail.com> 2004-2007 and
-copyright Reuben Thomas 2009-2011, and is released under the MIT
-license, like Lua (see http://www.lua.org/copyright.html; it's
-basically the same as the BSD license). There is no warranty.
-
-Please report bugs and make suggestions to the email address above, or
-use the LuaForge trackers.
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://mit-license.org)
+[![travis-ci status](https://secure.travis-ci.org/lcurses/lcurses.png?branche=master)](http://travis-ci.org/lcurses/lcurses/builds)
+[![Stories in Ready](https://badge.waffle.io/lcurses/lcurses.png?label=ready&title=Ready)](https://waffle.io/lcurses/lcurses)
 
 
-Installation
-------------
+lcurses is a curses binding for [Lua] 5.1, 5.2 and 5.3 (including LuaJIT).
 
-As normal:
-
-[If using git sources:
-
-    ./autogen.sh
-]
-
-    ./configure && make [&& make install]
-
-The following options may be of interest if you have Lua installed on
-non-default paths (as you are likely to on any system supporting more
-than one version of Lua):
-
-  --libdir=DIR            Install shared library in this directory
-  --with-lua-prefix=DIR   Lua files are in DIR
-  --with-lua-suffix=ARG   Lua binary and library files are suffixed with ARG
-
-For example, on Debian or Ubuntu:
-
-  CPPFLAGS=/usr/include/lua5.1 ./configure --libdir=/usr/local/lib/lua/5.1 --with-lua-suffix=5.1
-
-
-Use
----
+lcurses is released under the MIT license, like Lua (see [COPYING];
+it's basically the same as the BSD license). There is no warranty.
 
 Unfortunately, there's currently no documentation other than
 lcurses.c. It's fairly straightforward, though.
 
-GNU Zile 2.4.0 and later is written in Lua, using lcurses, so it
-contains plenty of example code. See the lua branch of its git
-repository at: http://git.savannah.gnu.org/cgit/zile.git
+Please report bugs and make suggestions by opening an issue on the
+github tracker.
+
+Installation
+------------
+
+The simplest way to install lcurses is with [LuaRocks]. To install the
+latest release (recommended):
+
+    luarocks install lcurses
+
+To install current git master (for testing):
+
+    luarocks install https://raw.github.com/lcurses/lcurses/release/lcurses-git-1.rockspec
+
+To install without LuaRocks, check out the sources from the
+[repository][GitHub] and run the following commands:
+
+    cd lcurses
+    ./bootstrap
+    ./configure --prefix=INSTALLATION-ROOT-DIRECTORY
+    make all check install
+
+Dependencies are listed in the dependencies entry of the file
+`rockspec.conf`. You will also need Autoconf and Automake.
+
+See [INSTALL] for `configure` instructions and `configure --help`
+for details of available command-line switches.
+
+
+Bugs reports & patches
+----------------------
+
+Bug reports and patches are most welcome. Please use the github issue
+tracker (see URL at top). There is no strict coding style, but please
+bear in mind the following points when writing new code:
+
+0. Follow existing code. There are a lot of useful patterns and
+   avoided traps there.
+
+1. 8-character indentation using TABs in C sources; 2-character
+   indentation using SPACEs in Lua sources.
+
+
+[Lua]: http://www.lua.org/
+[GitHub]: https://github.com/lcurses/lcurses
+[LuaRocks]: http://www.luarocks.org "Lua package manager"
+[LDoc]: https://github.com/stevedonovan/LDoc "Lua documentation generator"
+[COPYING]: https://raw.github.com/lcurses/lcurses/release/COPYING
+[INSTALL]: https://raw.github.com/lcurses/lcurses/release/INSTALL
